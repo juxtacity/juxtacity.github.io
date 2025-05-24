@@ -1,0 +1,436 @@
+<!DOCTTYPE html>
+<html>
+    <head>
+       <link rel="stylesheet" href="style.css">
+       <style data="test" type="text/css"></style>
+       <style data="balanceStyles" type="text/css"></style>
+       <style>
+       
+       canvas{
+           image-rendering:pixelated;
+       }
+       
+       .options *{
+           max-width:300px;
+       }
+       
+           body{
+               margin:5%;
+               padding-bottom:100px;
+           }
+           #canvas{
+               width:70%;
+               float:right;
+           }
+           img{
+               width:300px;
+           }
+           #colors{
+               width:18%;
+           }
+           
+           input[type="file"]{
+               color:white;
+           }
+           
+           input[type="number"]{
+               width:100px;
+           }
+           
+           input[type="range"]{
+                overflow: hidden;
+                width:300px;
+            }
+           ::-webkit-slider-runnable-track {
+    background: #ddd;
+}
+
+::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px; /* 1 */
+    height: 40px;
+    background: #fff;
+    box-shadow: -100vw 0 0 100vw dodgerblue;
+}
+
+::-moz-range-track {
+    height: 40px;
+    background: #ddd;
+}
+       </style>
+    </head>
+    <body>
+               <h1>Image Filter</h1>
+               <canvas id="canvas" height="1000" width="1000"></canvas>
+               <span id="options">
+                   <p>Select a color palette preset:</p>
+                    <select name="palets" id="paletSelect">
+                        <optgroup label="2-color palettes">
+                            <option value="27">Panda</option>
+                            <option value="28">Watery</option>
+                        </optgroup>
+                        <optgroup label="4-color palettes">
+                            <option value="0">EN4</option>
+                            <option value="1">Bloom</option>
+                            <option value="2">GameBoy</option>
+                            <option value="3">Sunset</option>
+                            <option value="4">Aqua</option>
+                            <option value="5">Rosemary</option>
+                            <option value="6">Downwell</option>
+                            <option value="7">Luftrausers</option>
+                            <option value="8">Nausea</option>
+                            <option value="9">Meniacal</option>
+                            <option value="10">Spooky n' scary</option>
+                            <option value="11">Bubbley</option>
+                            <option value="12">Steampunk 4</option>
+                            <option value="13">Cement</option>
+                            <option value="14">Commodore 4</option>
+                            <option value="15">Conifer</option>
+                            <option value="16">Obama</option>
+                            <option value="22">Convulsion</option>
+                        </optgroup>
+                        <optgroup label="8-color palettes">
+                            <option value="17">Edge-8</option>
+                            <option value="18">Steampunk-8</option>
+                            <option value="19">Midnight</option>
+                            <option value="24">Rasberry-8</option>
+                        </optgroup>
+                        <optgroup label="12-color palettes">
+                            <option value="20">Fez</option>
+                            <option value="23">Rasberry-12</option>
+                            <option value="25">Dastardly Woods</option>
+                            <option value="26">Sweet Apple</option>
+                        </optgroup>
+                        <optgroup label="128-color palettes">
+                            <option value="21">Splendor-128 (Because Why not?)</option>
+                        </optgroup>
+                </select>
+               </span>
+               <p>Or pick a palette yourself:</p>
+               <table>
+                   <tr>
+                       <td>
+                           <p>Color Palette:</p>
+                       </td>
+                       <td>
+                           <span id="colors">
+                <input type="color" id="col4" name="col4" value="#FBF7F3" multiple>
+                <input type="color" id="col3" name="col3" value="#FFB083" multiple>
+                <input type="color" id="col2" name="col2" value="#426E5D" multiple>
+                <input type="color" id="col1" name="col1" value="#20283D" multiple>
+                </span>
+                       </td>
+                   </tr>
+                   
+                   <tr>
+                       <td>
+                           <p>Color Balances:</p>
+                       </td>
+                       <td>
+                           <span id="balances">
+                <input type="color" id="ran4" name="col4" value="#FBF7F3" multiple>
+                <input type="color" id="ran3" name="col3" value="#FFB083" multiple>
+                <input type="color" id="ran2" name="col2" value="#426E5D" multiple>
+                <input type="color" id="ran1" name="col1" value="#20283D" multiple>
+                </span>
+                       </td>
+                   </tr>
+               </table>
+               
+                <br>
+                
+                <br>
+                <input type="button" value="resetBalances"  onClick = "resetBalances()">
+                <input type="button" value="grayScaleBalances"  onClick = "grayScaleBalances()">
+                <canvas id="colorMap"></canvas>
+                <!--
+                <span id=ranges >
+                    <input type="range" min="0" max="255" value="192" class="slider" id="rol3"> <br>
+                    <input type="range" min="0" max="255" value="128" class="slider" id="rol2"><br>
+                    <input type="range" min="0" max="255" value="64" class="slider" id="rol1"><br>
+                </span>
+                -->
+               
+               <p>Set the image width (No input for a default width)</p>
+               <input type="number" id="width" placeholder="Width">
+               <p>Amount of dithering</p>
+               <input type="number" id="ditherAmount" placeholder="Dithering" value=0>
+               <p>Upload a file or enter an image url</p>
+               <input type="file" id="myFile" name="filename" single> <br>
+               <input type="field" id="text" name="text" placeholder="Enter a URL here"> <br>
+                <input type="button" value="Filter Image" id = "submit" onClick = "processImage()">
+               
+        
+        <script>
+        function resetBalances(){
+            for(i = 0; i < cols.length; i++){
+                rans[i].value = cols[i].value
+            }
+            setColorMap()
+        }
+        
+        function grayScaleBalances(){
+            for(i = 0; i < cols.length; i++){
+                let rgb = hexToRgb(rans[i].value)
+                rans[i].value = rgbToHex(Array.from({length:3}).map(function(){return Math.floor((rgb[0] + rgb[1] + rgb[2])/3)}))
+            }
+            setColorMap()
+        }
+        
+let colorCanvas = document.getElementById("colorMap")
+let ctc = colorCanvas.getContext("2d")
+let colorMap = new Image()
+colorMap.src = "https://codehs.com/uploads/d03351e2229ae315ea4a6c3aa4fd74e7"
+colorMap.crossOrigin = "Anonymous";
+colorMap.onload = function () {
+        colorCanvas.width = colorMap.width
+        colorCanvas.height = colorMap.height
+        setColorMap()
+}
+
+let readyToColorMap = true
+function setColorMap(){
+    if(readyToColorMap){
+        readyToColorMap = false
+    for(i = 0; i < palet.length; i++){
+        mappingValues[i] = hexToRgb(document.getElementById("ran" + (i + 1)).value)
+    }
+    ctc.drawImage(colorMap, 0, 0)
+    colorData = ctc.getImageData(0, 0, colorCanvas.width, colorCanvas.height)
+    graphIn = colorData.data
+    graphOut = graphIn
+    for(i = 0; i < graphIn.length; i+=4){
+        currentPixel = (graphIn[i+2] + graphIn[i + 1] +graphIn[i])/3
+        
+        mins = mappingValues.map(pixel => (Math.abs(pixel[0] - graphIn[i]) + Math.abs(pixel[1] - graphIn[i + 1]) + Math.abs(pixel[2] - graphIn[i + 2]))/3)
+        vin = Math.min(...mins)
+        v = mins.indexOf(vin)
+            
+        graphOut[i] = palet[v][0]
+        graphOut[i + 1] = palet[v][1]
+        graphOut[i + 2] = palet[v][2]
+        graphOut[i + 3] = 255
+    }
+    outData = new ImageData(graphOut, colorData.width, colorData.height)
+    ctc.putImageData(outData, 0, 0)
+    readyToColorMap = true
+    }
+    
+}
+
+let paletImage = new Image()
+paletImage.src = "https://codehs.com/uploads/519a2910a8cb972c89028bd4f6d85a2c"
+paletImage.crossOrigin = "Anonymous";
+let palets = [];
+paletImage.onload = function () {
+    palbit = createImageBitmap(paletImage);
+
+    palbit.then(value => {
+        ctx.drawImage(value, 0, 0, value.width, value.height);
+        data = ctx.getImageData(0, 0, value.width, value.height)
+        u8int = data.data
+        ctx.clearRect(0, 0, value.width, value.height)
+        for(row = 0; row < data.height; row++){
+            palets[row] = []
+            for(i = 0; i < data.width * 4; i+=4){
+                if(u8int[3 + i + (row * 4 * value.width)] == 0){
+                    i = data.width * 4
+                } else {
+                    palets[row][i/4] = [u8int[i + (row * 4 * value.width)], u8int[1 + i + (row * 4 * value.width)], u8int[2 + i + (row * 4 * value.width)]]
+                }
+            }
+        }
+    })
+    
+    
+}
+
+
+var style = document.querySelector('[data="test"]');
+
+
+let canvas = document.getElementById("canvas")
+let ctx = document.getElementById("canvas").getContext("2d");
+let g = null
+function processImage(){
+    g = document.getElementById('myFile').files;
+    for(i = 0; i < cols.length; i++){
+        palet[i] = hexToRgb(document.getElementById("col" + (i + 1)).value)
+    }
+    mappingValues = []
+    for(i = 0; i < palet.length; i++){
+        mappingValues[i] = hexToRgb(document.getElementById("ran" + (i + 1)).value)
+    }
+    if(g.length > 0){
+       image = createImageBitmap(g[0]);
+    
+    image.then(value => makeImage(value)) 
+    } else {
+        image = new Image()
+        image.crossOrigin = "Anonymous";
+        image.src = document.getElementById('text').value || "https://upload.wikimedia.org/wikipedia/commons/e/e8/The_Bean_-_Cloud_Gate_%2835031895994%29.jpg";
+        
+        image.onload = function () {
+            makeImage(image)
+        }
+        
+    }    
+    
+
+}
+palet = [
+    [32, 40, 61],
+    [66, 110, 93],
+    [229, 176, 131],
+    [251, 247, 243],
+    ]
+mappingValues = [
+    [32, 40, 61],
+    [66, 110, 93],
+    [229, 176, 131],
+    [251, 247, 243],
+    ]
+
+function hexToRgb(hex) {
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? [
+    parseInt(result[1], 16),
+    parseInt(result[2], 16),
+    parseInt(result[3], 16)
+  ] : null;
+}
+
+function componentToHex(c) {
+  var hex = c.toString(16);
+  return hex.length == 1 ? "0" + hex : hex;
+}
+
+function rgbToHex(rgb) {
+  return "#" + componentToHex(rgb[0]) + componentToHex(rgb[1]) + componentToHex(rgb[2]);
+}
+
+    rans = [
+        document.getElementById('ran1'),
+        document.getElementById('ran2'),
+        document.getElementById('ran3'),
+        document.getElementById('ran4'),
+        ]
+        
+    cols = [
+        document.getElementById('col1'),
+        document.getElementById('col2'),
+        document.getElementById('col3'),
+        document.getElementById('col4'),
+        ]
+        
+for(i = 0; i < rans.length; i++){rans[i].addEventListener('input', setColorMap)}
+for(i = 0; i < cols.length; i++){cols[i].addEventListener('input', function(doop){
+    for(i = 0; i < cols.length; i++){
+        palet[i] = hexToRgb(cols[i].value)
+    }
+    setColorMap()
+})}
+
+document.getElementById('paletSelect').addEventListener('change', function(e){
+    palet = palets[e.target.value]
+    cols = []
+    rans = []
+    mappingValues = []
+    setPaletSize()
+    for(i = 0; i < cols.length; i++){
+        cols[i].value = rgbToHex(palet[i])
+    }
+    setColorMap()
+    resetBalances()
+})
+colorSpan = document.getElementById("colors")
+balanceSpan = document.getElementById("balances")
+function setPaletSize(){
+    colorString = ""
+    balanceString = ""
+    for(i = palet.length - 1; i > -1; i--){
+        colorString = colorString.concat('<input type="color" id="col' + (i + 1) + '" name="col1" value="#20283D">')
+        balanceString = balanceString.concat('<input type="color" id="ran' + (i + 1) + '" name="col1" value="#20283D">')
+    }
+    
+    colorSpan.innerHTML = colorString
+    balanceSpan.innerHTML = balanceString
+   
+    cols = Array.from({length:palet.length}).map((x, i) => x = document.getElementById("col" + (i+1)))
+    rans = Array.from({length:palet.length}).map((x, i) => x = document.getElementById("ran" + (i+1)))
+    for(i = 0; i < rans.length; i++){rans[i].addEventListener('input', setColorMap)}
+for(i = 0; i < cols.length; i++){cols[i].addEventListener('input', function(doop){
+    for(i = 0; i < cols.length; i++){
+        palet[i] = hexToRgb(cols[i].value)
+    }
+})}
+}
+
+function updateValue(e) {
+    
+}
+   
+function setSliderColors(){
+       style.innerHTML = "#rol" + 1 + "::-webkit-slider-thumb { box-shadow: -100vw 0 0 100vw " +document.getElementById("col" + 1).value + "; }" +
+    "#rol" + 2 + "::-webkit-slider-thumb { box-shadow: -100vw 0 0 100vw " +document.getElementById("col" + 2).value + "; }" +
+    "#rol" + 3 + "::-webkit-slider-thumb { box-shadow: -100vw 0 0 100vw " +document.getElementById("col" + 3).value + "; }" +
+    "#rol" + 1 + "::-webkit-slider-runnable-track {background:" +  document.getElementById("col" + 2).value + ";}"+
+    "#rol" + 2 + "::-webkit-slider-runnable-track {background:" +  document.getElementById("col" + 3).value + ";}"+
+    "#rol" + 3 + "::-webkit-slider-runnable-track {background:" +  document.getElementById("col" + 4).value + ";}"
+       
+   }
+    
+function makeImage(value){
+    width = value.src == document.getElementById('text').value ? document.getElementById('width').value || value.width : document.getElementById('width').value || 320
+    height = value.height * (width/value.width)
+    canvas.width = width
+    canvas.height = height
+    ctx.drawImage(value, 0, 0, width, height);
+    
+
+    
+    ditherBalance = document.getElementById('ditherAmount').value
+    dithering = ditherBalance || false
+    shaderData = ctx.getImageData(0, 0, width, height);
+    graphIn = shaderData.data
+    graphOut = shaderData.data
+    currentPixel = null
+        
+        for(row = 0; row < shaderData.height; row++){
+            for(i = row * shaderData.width * 4; i < (row+1) * shaderData.width * 4; i+=4){
+                currentPixel = (graphIn[i+2] + graphIn[i + 1] +graphIn[i])/3
+                
+                mins = mappingValues.map(pixel => (Math.abs(pixel[0] - graphIn[i]) + Math.abs(pixel[1] - graphIn[i + 1]) + Math.abs(pixel[2] - graphIn[i + 2]))/3)
+                vin = Math.min(...mins)
+                v = mins.indexOf(vin)
+                mins.splice(v, 1)
+                vin2 = Math.min(...mins)
+                v2 = mins.indexOf(vin2)
+                varray = [v, v2]
+                if(dithering){
+                    if(currentPixel - (mappingValues[v][0]+mappingValues[v][1] + mappingValues[v][2])/3 < ditherBalance - 256){
+                        dith = width % 2 == 0 ? Math.floor((i + (row * 4)) % 8)/4 : Math.floor(i % 8)/4
+                        graphOut[i] = palet[Math.max(varray[dith], 0)][0]
+                        graphOut[i + 1] = palet[Math.max(varray[dith], 0)][1]
+                        graphOut[i + 2] = palet[Math.max(varray[dith], 0)][2]
+                    } else {
+                        graphOut[i] = palet[v][0]
+                        graphOut[i + 1] = palet[v][1]
+                        graphOut[i + 2] = palet[v][2]
+                    }
+                } else {
+                    graphOut[i] = palet[v][0]
+                    graphOut[i + 1] = palet[v][1]
+                    graphOut[i + 2] = palet[v][2]
+                }
+            }
+        }
+            outData = new ImageData(graphOut, shaderData.width, shaderData.height)
+    
+    ctx.putImageData(outData, 0, 0)
+}
+
+function clamp(num, min, max){return Math.min(Math.max(num, min), max);}
+        </script>
+    </body>
+</html>

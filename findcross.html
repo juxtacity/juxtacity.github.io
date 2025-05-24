@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            *{
+                image-rendering:pixelated
+            }
+            
+            img{
+                margin:0px;
+                padding:0px;
+                width:800vmax;
+            }
+            body{
+                margin:0px;
+                padding:0px;
+            }
+            
+            #imageGrid *{
+                margin:0px;
+                padding:0px;
+                border:0px none black;
+            }
+            #imageGrid{
+                border-spacing:0px;
+            }
+            
+            #sideBar {
+                position: fixed; 
+                top: 0; 
+                width:300px;
+                height: 100%; 
+                background-color:white;
+                overflow: auto;
+                border-right:5px solid black;
+                padding-left:10px;
+            }
+            
+            #sideBar li{
+                font-size:24px;
+            }
+            
+            #sideBar *{
+                font-family:cursive;
+                font-weight: 900
+            }
+            a{
+                color:black !important;
+            }
+            
+        </style>
+    </head>
+    <body>
+        
+        <div id="sideBar">
+            <a href="index.html">Home</a>
+            <p>Click on something when you find it <br>Hold space to drag</p>
+
+            <h1>Things to find:</h1>
+            <ul>
+                <li id="guy">
+                    A guy roasting marshmallows
+                </li>
+                <li id="deer">
+                    A deer
+                </li>
+                <li id="babyDeer">
+                    A baby deer
+                </li>
+                <li id="sunflower">
+                    A smiling sunflower
+                </li>
+                <li id="duck">
+                    A magestic duck
+                </li>
+            </ul>
+        </div>
+        <table id="imageGrid">
+            <tr>
+                <td>
+                    <img src="https://codehs.com/uploads/136c61dc27937de32b7e0f931a297a0e" usemap="#map1" id="img">
+                    <map name="map1">
+                        <area shape="rect" dcoords="664, 1808, 673, 1833" coords="" onclick="complete('guy')">
+                        <area shape="rect" dcoords="2584, 2910, 2617, 2943" coords="" onclick="complete('deer')">
+                        <area shape="rect" dcoords="2432, 1726, 2441, 1759" coords="" onclick="complete('babyDeer')">
+                        <area shape="rect" dcoords="730, 2971, 747, 2995" coords="" onclick="complete('sunflower')">
+                        <area shape="rect" dcoords="1621, 1312, 1632, 1317" coords="" onclick="complete('duck')">
+                    </map>
+                </td>
+            </tr>
+        </table>
+        <script>
+        let drag = false
+        document.addEventListener('mousemove', e => {
+          if (drag) {
+            window.scrollBy(-e.movementX, -e.movementY)
+          }
+        });
+        
+        document.addEventListener("keydown", key => {
+            if(key.key == " "){
+                key.preventDefault()
+                drag = true
+            }
+        })
+        
+        document.addEventListener("keyup", key => {
+            if(key.key == " "){
+                key.preventDefault()
+                drag = false
+            }
+        })
+        
+        function setAreas(){
+            areas = document.getElementsByTagName("area")
+            areaScale = Math.max(window.innerWidth, window.innerHeight) * 8 / 3072
+        for(i = 0; i < areas.length; i++){
+            coordsStr = areas[i].getAttribute("dcoords")
+            coords = coordsStr.split(',');
+            coords.forEach((x, i) => {coords[i] = parseInt(x) * areaScale})
+            areas[i].coords = coords[0] + ',' + coords[1] + ',' + coords[2] + ',' + coords[3]
+        }
+        }
+        setAreas()
+        
+        window.addEventListener('resize', setAreas);
+
+        function complete(thing){
+            document.getElementById(thing).style.textDecoration = "line-through"
+        }
+    </script>
+    </body>
+</html>
