@@ -1,5 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
+:root {
+    --green1: #c8d45d;
+    --green2: #63ab3f;
+    --green3: #3b7d4f;
+    --green4: #3b7d4f;
+    --green5: #283540;
+
+    --blue1: #92e8c0;
+    --blue2: #4fa4b8;
+    --blue3: #4c6885;
+    --blue4: #3a3f5e;
+    --blue5: #2b2b45;
+
+    --red1: #ff5277;
+    --red2: #cc2f7b;
+    --red3: #9c2a70;   
+    --red4: #692464;
+    --red5: #4b1d52;
+
+    --yellow1: #ffee83;
+    --yellow2: #f0b541;
+    --yellow3: #cf752b;
+    --yellow4: #ab5130;
+    --yellow5: #7d3833;
+    --yellow6: #3b2027;
+
+    --white: #f5ffe8;
+
+    --black: #1b1f21;
+    --blackWarm: #21181b;
+}
 
 .navbar {
     position: fixed; 
@@ -21,42 +52,34 @@
 
 .navbar a:hover {
     
-  background-color: #9494FF;
+  background-color: var(--green3);
   color: black;
 }
 
 
 .navbar a.active {
-  background-color: #04AA6D;
+  background-color: var(--green1);
   color: white;
 }
 
 body {
-    background: #222222; 
+    background: var(--black); 
     padding-top: 50;
-    font-family: Verdana;
+    font-family: Raleway, sans-serif;
     color: #ffffff;
 }
-    /*
-    body{
-        padding-top: 50;
-        font-family: Verdana;
-        color: #ffffff;
-        background-Color: #222222;
-    }
-    */
     a{
         color: #9494FF;
     }
     
     h6{
-        color: #aaaaaa;
+        color:var(--blue1);
         font-size: 18px;
         text-align: center;
     }
     
     h5{
-        color: #aaaaaa;
+        color: var(--blue1);
         font-size: 24px;
         margin-top: 0px;
         margin-bottom: 0px;
@@ -64,18 +87,18 @@ body {
     
     h1{
         text-align: center;
-        color: #ffffff;
+        color: var(--white);
         font-size: 48px;
     }
     
     p{
         font-size: 13px;
-        color: #cccccc;
+        color: var(--white);
     }
     
     .footer{
         text-align: center;
-        color: #555555;
+        color: var(--blue3);
         font-size: 10px;
     }
     
@@ -84,11 +107,11 @@ body {
         padding-top: 30;
         padding-left: 50;
         padding-right: 50;
-        background-color: #000000;
+        background-color: var(--blue5);
     }
     
     header{
-        background-color: #FF5700;
+        background-color: var(--green3);
         text-align: center;
         padding-bottom: 10;
         padding-top: 10;
@@ -97,7 +120,7 @@ body {
     li{
         padding-top: 10;
         font-size: 15px;
-        color: #9494FF;
+        color: var(--blue2);
     }
     
     table{
@@ -116,7 +139,7 @@ body {
     }
     
     th{
-        color: #aaaaaa;
+        color: var(--blue2);
         font-size: 14px;
         text-align: center;
     }

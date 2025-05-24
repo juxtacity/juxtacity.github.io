@@ -1,235 +1,242 @@
 <!DOCTTYPE html>
 
-<html>
-<head>
-    <link rel="icon" 
-     type="image/png" 
-     href="https://codehs.com/uploads/50f871a46b6f3948e7d6096a9ef2f156">
+    <html>
 
-    <title id="title"></title>
-    
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="Utilities.js"></script>   
-    <style data="sbdiv" type="text/css"></style>
-    <style data="pxdiv" type="text/css"></style>
-    <style data="fcdiv" type="text/css"></style>
+    <head>
+        <link rel="icon" type="image/png" href="https://codehs.com/uploads/50f871a46b6f3948e7d6096a9ef2f156">
 
-    <style>
-    
-        .animatedDiv{
-            width:100%;
-            height:500px;
-            background-size: cover;
-            animation-duration: 20s;
-            animation-iteration-count: infinite;
-            background-position:center;
-        }
-        .animatedDiv h1, .animatedDiv p{
-            color:black
-        }
-        
-        .animatedDiv table{
-            width:100%;
-            height:500px;
-        }
-        
-        .animatedDiv *{
-            text-Align:center;
-        }
-        
-        .animatedDiv a{
-            color: #f2f2f2;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-size: 17px;
-            background-color: #9494FF;
-        }
-        
-        .animatedDiv a:visited{
-            backGround-color:purple;
-        }
-        
-        .animatedDiv a:active{
-            background-color: #FF5700;
-        }
-        
-        .animatedDiv td{
-            border-style:none;
-        }
-        
-        #sbdiv{
-            animation-name: sbdiv;
-        }
-        
-        #pxdiv{
-            animation-name: pxdiv;
-            image-rendering:pixelated
-        }
-        
-         #fcdiv{
-            animation-name: fcdiv;
-            image-rendering:pixelated
-        }
-        
-        
-        #explain{
-            height:100%;
-        }
-        
-        p{
-            font-size:24px;
-        }
-        
-        #prevs td{
-            width:10%;
-            border-style:none;
-        }
+        <title id="title"></title>
 
-    </style>
-</head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="Utilities.js"></script>
+        <style data="sbdiv" type="text/css"></style>
+        <style data="pxdiv" type="text/css"></style>
+        <style data="fcdiv" type="text/css"></style>
 
-<body>
-    
-    <div include-html="navbar.html"></div>
-
-    <header>
-        <h6 id="time-message">Good Evening</h6>
-        <h1>The Website of Your Dreams</h1>
-    </header>
-   <div id="explain">
-        <h6>About Me</h6>
-        <p>My name is Ben and I like programming. You might have heard me called John, that's because that's my first name, 
-        but I like to go by Ben. It's fine if you do call me John though, I don't mind that much. Also I don't like politics,
-        so don't even ask
-        </p>
-        <h6>About The Website</h6>
-        <p>
-            This website is an assortment of things that I made. One of them is a game, and one of them is an image filterer.
-            This website is also the "final project" for my programming class.
-        </p>
-   </div>
-   <table id="prevs">
-       <tr>
-           <td>
-                <div id="sbdiv" class="animatedDiv">
-       <table>
-            <tr>
-                <td>
-                        <h1>Saber Balistic</h1>
-                        <p>A game I made about shooting things</p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h1><a href="Game.html"> Go To Page </a></h1>
-                </td>
-            </tr>
-        </table>
-   </div>
-           </td>
-            <td>
-                <div id="fcdiv" class="animatedDiv">
-       <table>
-            <tr>
-                <td>
-                    <h1>Findcross ( work in progress )</h1>
-                    <p>A game about finding things</p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h1><a href="findcross.html"> Go To Page </a></h1>
-                </td>
-            </tr>
-        </table>
-   </div>
-           </td>
-           <td>
-               <div id="pxdiv" class="animatedDiv">
-        <table>
-            <tr>
-                <td>
-                    <h1>Pixel Art Maker / Image Filter</h1>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h1><a href="ImageFilterer.html"> Go To Page </a></h1>
-                </td>
-            </tr>
-        </table>
-        
-        
-    </div>
-           </td>
-       </tr>
-   </table>
-  
-
-    
-
-   
-   
-<footer class="footer">  
-    <p class="footer" id="title-info">footer is not working right now, I'll fix it later</p>
-    <p class="footer">Thank you to my friends for helping me make a ludicrous number of different titles.
-    </p>
-    <p class="footer">Hopefully I don't get in trouble for using the Reddit colors on my website. :)</p>
-    </footer>
-    <script>
-
-    let today = new Date();
-    
-    if(today.getHours() < 3 || today.getHours() > 23){
-        document.getElementById("time-message").innerHTML = "Go to Bed, it's too Late";
-    } else if(today.getHours() < 10){
-        document.getElementById("time-message").innerHTML = "Good morning";
-    } else if(today.getHours() < 14){
-        document.getElementById("time-message").innerHTML = "Hello, Good Day";
-    } else if(today.getHours() < 20){
-        document.getElementById("time-message").innerHTML = "Good Evening";
-    } else if(today.getHours() < 23){
-        document.getElementById("time-message").innerHTML = "Good Night";
-    }
-    </script>
-    
-    <script>
-        title();
-        includeHTMl();
-        sbImages = [
-            "https://codehs.com/uploads/e9e569bbc4a709095ffb6525b72dbe8a",
-            "https://codehs.com/uploads/a1ecad0d79c2d26920feeb7e914a394d",
-            "https://codehs.com/uploads/cd1db2753f97e8505675359cccdd8250"
-            ]
-            
-        fcImages = [
-            "https://codehs.com/uploads/0dc32bf3d323a302db9d29bcb770f45b",
-            "https://codehs.com/uploads/bfca7966bec7a4835b102fae261b0a3f"
-            ]
-            
-        pxImages = [
-            "https://codehs.com/uploads/71868fae9088c292459df84a15b86783",
-            "https://codehs.com/uploads/346606caa1c8313da8d654076c644a06",
-            "https://codehs.com/uploads/ea5e2923dcfd177edec05a0f0e955cc0",
-            "https://codehs.com/uploads/149ec71cea92ecd2f684d94d3f001632"
-            ]
-        
-        setDivStyles("sbdiv", sbImages)
-        setDivStyles("pxdiv", pxImages)
-        setDivStyles("fcdiv", fcImages)
-
-        function setDivStyles(datName, images){
-            styles = document.querySelector('[data="'+datName+'"]');
-            html = "@keyframes "+datName+"{"
-            for(i = 0; i < images.length; i++){
-                html = html.concat(((i/images.length) * 100) + "%{background-image:url("+images[i]+");}")
+        <style>
+            .animatedDiv {
+                width: 100%;
+                height: 500px;
+                background-size: cover;
+                animation-duration: 20s;
+                animation-iteration-count: infinite;
+                background-position: center;
             }
-            html = html.concat("100%{background-image:url("+images[0]+");}")
-            html = html.concat("}")
-            styles.innerHTML = html
-        }
-    </script>
-</body>   
 
-</html>
+            .animatedDiv h1,
+            .animatedDiv p {
+                color: black
+            }
+
+            .animatedDiv table {
+                width: 100%;
+                height: 500px;
+            }
+
+            .animatedDiv * {
+                text-Align: center;
+            }
+
+            .animatedDiv a {
+                color: var(--white);
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+                background-color: var(--blue3);
+            }
+
+            .animatedDiv a:visited {
+                backGround-color: var(--blue4);
+            }
+
+            .animatedDiv a:active {
+                background-color: var(--blue2);
+            }
+
+            .animatedDiv td {
+                border-style: none;
+            }
+
+            .animatedDivTitle {
+                color: var(--white);
+                text-shadow: -1px 1px 0 var(--blue2), 1px 1px 0 var(--blue2), 1px -1px 0 var(--blue2), -1px -1px 0 var(--blue2);
+            }
+
+            #sbdiv {
+                animation-name: sbdiv;
+            }
+
+            #pxdiv {
+                animation-name: pxdiv;
+                image-rendering: pixelated
+            }
+
+            #fcdiv {
+                animation-name: fcdiv;
+                image-rendering: pixelated
+            }
+
+
+            #explain {
+                height: 100%;
+            }
+
+            p {
+                font-size: 24px;
+            }
+
+            #prevs td {
+                width: 10%;
+                border-style: none;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div include-html="navbar.html"></div>
+
+        <header>
+            <h6 id="time-message">Good Evening</h6>
+            <h1>The Website of Your Dreams</h1>
+        </header>
+        <div id="explain">
+            <h6>About Me</h6>
+            <p>My name is Ben and I like programming. You might have heard me called John, that's because that's my
+                first name,
+                but I like to go by Ben. It's fine if you do call me John though, I don't mind that much. Also I don't
+                like politics,
+                so don't even ask
+            </p>
+            <h6>About The Website</h6>
+            <p>
+                This website is an assortment of things that I made. One of them is a game, and one of them is an image
+                filterer.
+                This website is also the "final project" for my programming class.
+            </p>
+        </div>
+        <table id="prevs">
+            <tr>
+                <td>
+                    <div id="sbdiv" class="animatedDiv">
+                        <table>
+                            <tr>
+                                <td>
+                                    <h1 class="animatedDivTitle">Saber Balistic</h1>
+                                    <p class="animatedDivTitle">A game I made about shooting things</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h1><a href="Game.html"> Go To Page </a></h1>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+                <td>
+                    <div id="fcdiv" class="animatedDiv">
+                        <table>
+                            <tr>
+                                <td>
+                                    <h1 class="animatedDivTitle">Findcross ( work in progress )</h1>
+                                    <p class="animatedDivTitle">A game about finding things</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h1><a href="findcross.html"> Go To Page </a></h1>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+                <td>
+                    <div id="pxdiv" class="animatedDiv">
+                        <table>
+                            <tr>
+                                <td>
+                                    <h1 class="animatedDivTitle">Pixel Art Maker / Image Filter</h1>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h1><a href="ImageFilterer.html"> Go To Page </a></h1>
+                                </td>
+                            </tr>
+                        </table>
+
+
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+
+
+
+
+
+        <footer class="footer">
+            <p class="footer" id="title-info">footer is not working right now, I'll fix it later</p>
+            <p class="footer">Thank you to my friends for helping me make a ludicrous number of different titles.
+            </p>
+            <p class="footer">Hopefully I don't get in trouble for using the Reddit colors on my website. :)</p>
+        </footer>
+        <script>
+
+            let today = new Date();
+
+            if (today.getHours() < 3 || today.getHours() > 23) {
+                document.getElementById("time-message").innerHTML = "Go to Bed, it's too Late";
+            } else if (today.getHours() < 10) {
+                document.getElementById("time-message").innerHTML = "Good morning";
+            } else if (today.getHours() < 14) {
+                document.getElementById("time-message").innerHTML = "Hello, Good Day";
+            } else if (today.getHours() < 20) {
+                document.getElementById("time-message").innerHTML = "Good Evening";
+            } else if (today.getHours() < 23) {
+                document.getElementById("time-message").innerHTML = "Good Night";
+            }
+        </script>
+
+        <script>
+            title();
+            includeHTMl();
+            sbImages = [
+                "https://codehs.com/uploads/e9e569bbc4a709095ffb6525b72dbe8a",
+                "https://codehs.com/uploads/a1ecad0d79c2d26920feeb7e914a394d",
+                "https://codehs.com/uploads/cd1db2753f97e8505675359cccdd8250"
+            ]
+
+            fcImages = [
+                "https://codehs.com/uploads/0dc32bf3d323a302db9d29bcb770f45b",
+                "https://codehs.com/uploads/bfca7966bec7a4835b102fae261b0a3f"
+            ]
+
+            pxImages = [
+                "https://codehs.com/uploads/71868fae9088c292459df84a15b86783",
+                "https://codehs.com/uploads/346606caa1c8313da8d654076c644a06",
+                "https://codehs.com/uploads/ea5e2923dcfd177edec05a0f0e955cc0",
+                "https://codehs.com/uploads/149ec71cea92ecd2f684d94d3f001632"
+            ]
+
+            setDivStyles("sbdiv", sbImages)
+            setDivStyles("pxdiv", pxImages)
+            setDivStyles("fcdiv", fcImages)
+
+            function setDivStyles(datName, images) {
+                styles = document.querySelector('[data="' + datName + '"]');
+                html = "@keyframes " + datName + "{"
+                for (i = 0; i < images.length; i++) {
+                    html = html.concat(((i / images.length) * 100) + "%{background-image:url(" + images[i] + ");}")
+                }
+                html = html.concat("100%{background-image:url(" + images[0] + ");}")
+                html = html.concat("}")
+                styles.innerHTML = html
+            }
+        </script>
+    </body>
+
+    </html>
