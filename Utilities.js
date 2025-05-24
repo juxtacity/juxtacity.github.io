@@ -608,7 +608,7 @@ function title(){
           "I use cookies to track how many titles you have viewed, that's all they do. ";
        }
 
-    document.getElementById("title").innerHTML = names[arrayOn][number];
+    document.getElementById("title").innerHTML = "Juxtacity : " + names[arrayOn][number];
 
 }
 
