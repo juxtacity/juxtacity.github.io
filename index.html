@@ -77,11 +77,6 @@
                 image-rendering: pixelated
             }
 
-
-            #explain {
-                height: 100%;
-            }
-
             p {
                 font-size: 24px;
             }
@@ -90,11 +85,21 @@
                 width: 10%;
                 border-style: none;
             }
+
+            .special-text {
+                color: var(--red1);
+            }
+
+            h2 {
+                color: var(--blue1);
+                text-align: center;
+            }
         </style>
     </head>
 
-    <body>
 
+
+    <body>
         <div include-html="navbar.html"></div>
 
         <header>
@@ -103,16 +108,29 @@
             <h2>Music, writing, and anything inbetween</h2>
 
         </header>
-        <div id="explain">
-            <h6>About Me</h6>
-            <p>Hello, my name is Ben but sometimes my social media will say Juxtacity because I am really cool like
-                that.
-                I'm in the business of writing music - backing tracks for videos, game soundtracks, etc.. I also like to
-                write stories that I post here, and I've dabbled in programming a fair deal in my days (a veritable
-                dabbler am I). If you look beneath this dreadfully long paragraph, you will see a wqonderful assortment
-                of links that takes you to interesing stuff that is cool and epic and you should click on them:
-            </p>
-        </div>
+        <br><br><br>
+        <div></div>
+
+        <h2>About Me</h2>
+        <p>Hello, my name is Ben but sometimes my social media will say Juxtacity because I am really cool like
+            that.
+        </p>
+        <p>
+            This is my website for business and artistic purposes.
+            <span class="special-text"> I am mainly in the business of writing music -
+                backing tracks for videos, game soundtracks, etc.</span> - but
+            will do anything that you are willing to give me money for because that's how business works.
+        </p>
+        <p>
+            I also like to
+            write stories, which I plan to post here. I like drawing and would label myself as passably adequate,
+            and I've dabbled in programming a fair deal in my days (a veritable
+            dabbler am I).
+        </p>
+        <p>
+            <span class="special-text">Contact me with the Email below, or click on the links to view the stuff I've
+                made:</span>
+        </p>
         <table id="prevs">
             <tr>
                 <td>
@@ -179,7 +197,6 @@
             <p class="footer" id="title-info">footer is not working right now, I'll fix it later</p>
             <p class="footer">Thank you to my friends for helping me make a ludicrous number of different titles.
             </p>
-            <p class="footer">Hopefully I don't get in trouble for using the Reddit colors on my website. :)</p>
         </footer>
         <script>
 
