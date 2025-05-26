@@ -25,7 +25,7 @@
 
             .animatedDiv h1,
             .animatedDiv p {
-                color: black
+                color: var(--white);
             }
 
             .animatedDiv table {
@@ -58,23 +58,21 @@
                 border-style: none;
             }
 
-            .animatedDivTitle {
-                color: var(--white);
-                text-shadow: -1px 1px 0 var(--blue2), 1px 1px 0 var(--blue2), 1px -1px 0 var(--blue2), -1px -1px 0 var(--blue2);
-            }
-
             #sbdiv {
                 animation-name: sbdiv;
+                background-color: var(--red2);
             }
 
             #pxdiv {
                 animation-name: pxdiv;
-                image-rendering: pixelated
+                image-rendering: pixelated;
+                background-color: var(--yellow2);
             }
 
             #fcdiv {
                 animation-name: fcdiv;
-                image-rendering: pixelated
+                image-rendering: pixelated;
+                background-color: var(--blue2);
             }
 
             p {
@@ -138,13 +136,13 @@
                         <table>
                             <tr>
                                 <td>
-                                    <h1 class="animatedDivTitle">Saber Balistic</h1>
-                                    <p class="animatedDivTitle">A game I made about shooting things</p>
+                                    <h1 class="animatedDivTitle">My music</h1>
+                                    <p class="animatedDivTitle">This is the link that takes you to the music I wrote</p>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <h1><a href="Game.html"> Go To Page </a></h1>
+                                    <h1><a href="Music.html"> Go To Page </a></h1>
                                 </td>
                             </tr>
                         </table>
@@ -155,8 +153,9 @@
                         <table>
                             <tr>
                                 <td>
-                                    <h1 class="animatedDivTitle">Findcross ( work in progress )</h1>
-                                    <p class="animatedDivTitle">A game about finding things</p>
+                                    <h1 class="animatedDivTitle">My Writing</h1>
+                                    <p class="animatedDivTitle">Anything I wish to grace the earth with, and also my
+                                        blog</p>
                                 </td>
                             </tr>
                             <tr>
@@ -172,7 +171,9 @@
                         <table>
                             <tr>
                                 <td>
-                                    <h1 class="animatedDivTitle">Pixel Art Maker / Image Filter</h1>
+                                    <h1 class="animatedDivTitle">Other Stuff</h1>
+                                    <p class="animatedDivTitle">Things that don't fit in those last two categories but
+                                        that I posted anyways to stick it to the man</p>
                                 </td>
                             </tr>
                             <tr>
@@ -219,21 +220,21 @@
             title();
             includeHTMl();
             sbImages = [
-                "https://codehs.com/uploads/e9e569bbc4a709095ffb6525b72dbe8a",
-                "https://codehs.com/uploads/a1ecad0d79c2d26920feeb7e914a394d",
-                "https://codehs.com/uploads/cd1db2753f97e8505675359cccdd8250"
+                //"https://codehs.com/uploads/e9e569bbc4a709095ffb6525b72dbe8a",
+                //"https://codehs.com/uploads/a1ecad0d79c2d26920feeb7e914a394d",
+                //"https://codehs.com/uploads/cd1db2753f97e8505675359cccdd8250"
             ]
 
             fcImages = [
-                "https://codehs.com/uploads/0dc32bf3d323a302db9d29bcb770f45b",
-                "https://codehs.com/uploads/bfca7966bec7a4835b102fae261b0a3f"
+                //"https://codehs.com/uploads/0dc32bf3d323a302db9d29bcb770f45b",
+                // "https://codehs.com/uploads/bfca7966bec7a4835b102fae261b0a3f"
             ]
 
             pxImages = [
-                "https://codehs.com/uploads/71868fae9088c292459df84a15b86783",
-                "https://codehs.com/uploads/346606caa1c8313da8d654076c644a06",
-                "https://codehs.com/uploads/ea5e2923dcfd177edec05a0f0e955cc0",
-                "https://codehs.com/uploads/149ec71cea92ecd2f684d94d3f001632"
+                //"https://codehs.com/uploads/71868fae9088c292459df84a15b86783",
+                //"https://codehs.com/uploads/346606caa1c8313da8d654076c644a06",
+                //"https://codehs.com/uploads/ea5e2923dcfd177edec05a0f0e955cc0",
+                //"https://codehs.com/uploads/149ec71cea92ecd2f684d94d3f001632"
             ]
 
             setDivStyles("sbdiv", sbImages)
