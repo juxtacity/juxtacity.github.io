@@ -654,6 +654,4 @@ function setNavbarColor(color){
   document.documentElement.style.setProperty('--navbar1',"var(--"+ color +"1)");
   document.documentElement.style.setProperty('--navbar2',"var(--"+ color +"2)");
   document.documentElement.style.setProperty('--navbar3',"var(--"+ color +"3)");
-
-    
 }
