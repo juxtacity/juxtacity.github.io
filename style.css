@@ -30,6 +30,10 @@
 
     --black: #1b1f21;
     --blackWarm: #21181b;
+
+    --navbar1:var(--green1);
+    --navbar2:var(--green2);
+    --navbar3:var(--green3);
 }
 
 .navbar {
@@ -39,7 +43,7 @@
     width:100%;
     display: flex;
     z-index: 1000;
-    background-color: var(--green2);
+    background-color: var(--navbar2);
     overflow: hidden;
     }
 
@@ -55,13 +59,13 @@
 
 .navbar a:hover {
     
-  background-color: var(--green3);
+  background-color: var(--navbar3);
   color: black;
 }
 
 
 .navbar a.active {
-  background-color: var(--green1);
+  background-color: var(--navbar1);
   color: white;
 }
 

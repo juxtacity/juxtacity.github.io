@@ -4,15 +4,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Music</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="Utilities.js"></script>
+    <link rel="icon" type="image/png" href="https://codehs.com/uploads/50f871a46b6f3948e7d6096a9ef2f156">
 
+    <title id="title"></title>
+    <link rel="stylesheet" href="style.css">
+    <script src="Utilities.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            margin-top: 50px;
+        }
+
+        #musicTable {
+            width: 100%;
+            height: 100%;
+
+        }
+
+        #musicTable td {
+            vertical-align: top;
+            padding: 20px;
+            border-style: none;
+        }
+
+        #musicBox {
+            width: 100%;
+
+            background-color: var(--red3);
+            color: var(--white);
+            text-align: left-center;
+
+            margin-bottom: 20px;
+
+            border-style: none;
+        }
+
+        #title {
+
+            font-weight: bold;
+            font-size: 24px;
+            color: var(--white);
+            margin-bottom: 20px;
+            line-height: 50px;
+
+        }
+
+        #musicControls {
+            margin-top: 20px;
+            color: var(--white);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: var(--red5);
+            color: var(--white);
+            border: none;
+            padding: 5px 15px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .description {
+            font-size: 16px;
+            color: var(--white);
+            margin-top: 10px;
+            line-height: 24px;
+
+        }
+
+        #descriptionContainer {
+            width: 40%;
+            height: 100%;
+
+        }
+
+        #titleContainer {
+            width: 60%;
+            height: 100%;
+        }
+    </style>
 </head>
 
 <body>
+    <div include-html="navbar.html"></div>
+
+    <table id="musicTable">
+        <tr>
+            <td style="width: 50%; height: 100%;">
+                <h1>Some Samples of the music I've made</h1>
+
+                <table id="musicBox">
+                    <td id="titleContainer">
+                        <div>
+                            <span id="title">WoodBrook Theme</span>
+                            <audio id="player1" src="Woodbrook theme Preview.wav"></audio>
+                            <div>
+                                <button onclick="playAudio('player1')">Play</button>
+                                <button onclick="document.getElementById('player1').pause()">Pause</button>
+                            </div>
+                        </div>
+                    </td>
+                    <td id="descriptionContainer">
+                        <span class="description"> Chilled and Groovy vibes for when life is good and simple </span>
+                    </td>
+                </table>
+
+                <table id="musicBox">
+                    <td id="titleContainer">
+                        <div>
+                            <span id="title">Autumn in Taliss Town</span>
+                            <audio id="player2" src="Autumn In Taliss Town Preview.wav"></audio>
+                            <div>
+                                <button onclick="playAudio('player2')">Play</button>
+                                <button onclick="document.getElementById('player2').pause()">Pause</button>
+                            </div>
+                        </div>
+                    </td>
+                    <td id="descriptionContainer">
+                        <span class="description"> Somber and Reflective piano for the somberly reflected gentleperson
+                        </span>
+                    </td>
+                </table>
+
+                <table id="musicBox">
+                    <td id="titleContainer">
+                        <div>
+                            <span id="title">KhoulaKhai Bazaar</span>
+                            <audio id="player3" src="KhoulaKhaib Bazaar Preview.wav"></audio>
+                            <div>
+                                <button onclick="playAudio('player3')">Play</button>
+                                <button onclick="document.getElementById('player3').pause()">Pause</button>
+                            </div>
+                        </div>
+                    </td>
+                    <td id="descriptionContainer">
+                        <span class="description"> Captures the feeling of causing untold amounts of property damage in
+                            background decorations whilst beating up endless onslaughts of foes
+                        </span>
+                    </td>
+                </table>
+
+                <table id="musicBox">
+                    <td id="titleContainer">
+                        <div>
+                            <span id="title">Guardian of the Mountain Pass</span>
+                            <audio id="player4" src="Siberia Preview.wav"></audio>
+                            <div>
+                                <button onclick="playAudio('player4')">Play</button>
+                                <button onclick="document.getElementById('player4').pause()">Pause</button>
+                            </div>
+                        </div>
+                    </td>
+                    <td id="descriptionContainer">
+                        <span class="description"> And they said you can't put piano in electronic music.
+                        </span>
+                    </td>
+                </table>
 
 
+
+            </td>
+            <td style="width: 50%; height: 100%; position: fixed;">
+
+                <h1>My Channel</h1>
+
+            </td>
+        </tr>
+
+    </table>
+    <script>
+        setNavbarColor("red")
+        title();
+        includeHTMl();
+
+        playAudio();
+        function playAudio(audioToPlay) {
+            //pause all other audios
+            var audios = document.querySelectorAll('audio');
+            audios.forEach(function (otherAudio) {
+                if (otherAudio !== audio) {
+                    otherAudio.pause();
+                }
+            });
+            var audio = document.getElementById(audioToPlay);
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+
+        }
+    </script>
 </body>
 
 </html>
