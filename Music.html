@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="https://codehs.com/uploads/50f871a46b6f3948e7d6096a9ef2f156">
+    <link rel="icon" type="image/png" href="CampfireLogo.png">
 
     <title id="title"></title>
     <link rel="stylesheet" href="style.css">
@@ -85,11 +85,44 @@
             width: 60%;
             height: 100%;
         }
+
+        #infoBox {
+            width: 50%;
+            height: 100%;
+            background-color: var(--red4);
+            color: var(--white);
+            padding: 20px;
+            text-align: center;
+            font-size: 18px;
+            margin: 0px;
+            margin-bottom: 50px;
+        }
+
+        #infoBox p {
+            font-size: 18px;
+            color: var(--red1);
+
+        }
+
+        #infotable {
+            width: 100%;
+            height: 100%;
+            margin-top: 20px;
+            border: none;
+        }
+
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+            margin-top: 0px;
+        }
     </style>
 </head>
 
 <body>
-    <div include-html="navbar.html"></div>
+    <div include-html="prefabs/navbar.html"></div>
 
     <table id="musicTable">
         <tr>
@@ -100,7 +133,7 @@
                     <td id="titleContainer">
                         <div>
                             <span id="title">WoodBrook Theme</span>
-                            <audio id="player1" src="Woodbrook theme Preview.wav"></audio>
+                            <audio id="player1" src="SongPreviews/Woodbrook theme Preview.wav"></audio>
                             <div>
                                 <button onclick="playAudio('player1')">Play</button>
                                 <button onclick="document.getElementById('player1').pause()">Pause</button>
@@ -116,7 +149,7 @@
                     <td id="titleContainer">
                         <div>
                             <span id="title">Autumn in Taliss Town</span>
-                            <audio id="player2" src="Autumn In Taliss Town Preview.wav"></audio>
+                            <audio id="player2" src="SongPreviews/Autumn In Taliss Town Preview.wav"></audio>
                             <div>
                                 <button onclick="playAudio('player2')">Play</button>
                                 <button onclick="document.getElementById('player2').pause()">Pause</button>
@@ -133,7 +166,7 @@
                     <td id="titleContainer">
                         <div>
                             <span id="title">KhoulaKhai Bazaar</span>
-                            <audio id="player3" src="KhoulaKhaib Bazaar Preview.wav"></audio>
+                            <audio id="player3" src="SongPreviews/KhoulaKhaib Bazaar Preview.wav"></audio>
                             <div>
                                 <button onclick="playAudio('player3')">Play</button>
                                 <button onclick="document.getElementById('player3').pause()">Pause</button>
@@ -151,7 +184,7 @@
                     <td id="titleContainer">
                         <div>
                             <span id="title">Guardian of the Mountain Pass</span>
-                            <audio id="player4" src="Siberia Preview.wav"></audio>
+                            <audio id="player4" src="SongPreviews/Siberia Preview.wav"></audio>
                             <div>
                                 <button onclick="playAudio('player4')">Play</button>
                                 <button onclick="document.getElementById('player4').pause()">Pause</button>
@@ -166,13 +199,34 @@
 
 
 
+                <table id="infotable">
+                    <td id="infoBox">
+                        <p>My Youtube Channel:</p>
+                        <a href="https://www.youtube.com/@Juxtacity">youtube.com/@Juxtacity</a>
+
+
+                    </td>
+                    <td></td>
+                    <td id="infoBox">
+                        <p>Contact me for doing businesses:</p>
+                        <a href="mailto:juxtacitymusic@gmail.com">juxtacitymusic@gmail.com</a>
+
+                    </td>
+                </table>
+
+
             </td>
-            <td style="width: 50%; height: 100%; position: fixed;">
+            <td style=" width: 50%; height: 100%; position: fixed; ">
+                <a href="https://www.youtube.com/@Juxtacity">
+                    <h1 style="margin-bottom:0px;">My Channel</h1>
 
-                <h1>My Channel</h1>
 
+                    <img class="center" src="CampfireLogo.png" alt="Campfire Logo" style="width: 50%; height: auto;">
+
+                </a>
             </td>
         </tr>
+
 
     </table>
     <script>
