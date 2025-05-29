@@ -7,19 +7,140 @@
     <link rel="icon" type="image/png" href="CampfireLogo.png">
     <title id="title"></title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .blog-post {
 
+            color: var(--white);
+            padding: 20px;
+            margin: 50px 0;
+            width: 100%;
+        }
+
+        .blog-post h2 {
+            margin-top: 0;
+            font-size: 40px;
+            background-color: var(--blue5);
+            padding: 10px;
+        }
+
+        .blog-post p {
+            font-size: 24x;
+            line-height: 1.6;
+        }
+
+        .blog-post .date {
+            color: var(--blue1);
+        }
+
+        .blog-post td {
+            border-style: none;
+        }
+
+        body {
+
+            margin-top: 100px;
+            /* Adjusted to account for the navbar height */
+        }
+
+        .blog-post-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        .comment-body {
+            background-color: var(--blue4);
+            color: var(--white);
+            padding: 10px;
+            margin-top: 20px;
+            width: 35%;
+        }
+
+        .post-body {
+            width: 55%;
+            background-color: var(--blue3);
+            padding: 20px;
+
+        }
+
+        .post-body h2 {
+            font-size: 36px;
+            color: var(--white)
+        }
+
+        .post-body p {
+            font-size: 20px;
+        }
+
+        .spacer-td {
+            width: 5%;
+        }
+    </style>
 </head>
 
 <body>
     <div include-html="prefabs/navbar.html"></div>
-    <h1>Jokes on you, this page doesn't exist yet</h1>
+
+    <span id="blogContainer"></span>
     <script src="Utilities.js"></script>
+    <script src="BlogPosts.js"></script>
     <script>
         title();
         setNavbarColor("blue");
         includeHTML();
 
+        // Function to fetch and display blog posts
+        function displayBlogPosts() {
+            const blogContainer = document.getElementById('blogContainer');
+            blogContainer.innerHTML = ''; // Clear previous content
 
+            // Loop through each blog post and create HTML elements
+            blogPosts.forEach(post => {
+
+                postContainer = document.createElement('table');
+                postContainer.className = 'blog-post';
+
+
+                const postDiv = document.createElement('td');
+                postDiv.className = 'post-body';
+
+                const titleElement = document.createElement('h2');
+                titleText = document.createTextNode(post.title);
+                titleElement.appendChild(titleText);
+                dateSpan = document.createElement('span');
+                dateSpan.className = 'date';
+                dateSpan.textContent = ` - ${post.date}`;
+                titleElement.appendChild(dateSpan);
+                postDiv.appendChild(titleElement);
+
+
+
+                //go through each element in the content array and make them into paragraphs
+                for (let i = 0; i < post.content.length; i++) {
+                    const contentElement = document.createElement('p');
+                    contentElement.textContent = post.content[i];
+                    postDiv.appendChild(contentElement);
+                }
+                postContainer.appendChild(postDiv);
+
+                //make some space with a spacer td
+                const spacerTd = document.createElement('td');
+                spacerTd.className = 'spacer-td';
+                postContainer.appendChild(spacerTd);
+
+
+                commentContainer = document.createElement('td');
+                commentContainer.className = 'comment-body';
+                commentContainer.innerHTML = `<h3>Comments: coming soon</h3>`;
+
+                // Loop through each comment and create HTML elements
+
+                postContainer.appendChild(commentContainer);
+                blogContainer.appendChild(postContainer);
+            });
+        }
+        displayBlogPosts(); // Call the function to display blog posts
     </script>
 </body>
 
