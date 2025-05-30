@@ -1,6 +1,13 @@
 blogPosts = [
 
      {
+        title: "Apples",
+        date: "May 30th, 2025",
+        content: [
+            "I just ate an entire apple, including the core, and it feels like I broke out of the matrix; anything is possible now.",
+        ]
+    },
+     {
         title: "Dummy Post",
         date: "May 28th, 2025",
         content: [

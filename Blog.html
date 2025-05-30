@@ -82,9 +82,17 @@
 <body>
     <div include-html="prefabs/navbar.html"></div>
 
+    <form id="commentForm">
+        <input type="text" id="nameInput" placeholder="Your name (optional)" maxlength="30" />
+        <textarea id="commentInput" placeholder="Write your comment..." maxlength="150" required></textarea>
+        <button type="submit">Post</button>
+    </form>
+    <div id="commentsContainer"></div>
+
     <span id="blogContainer"></span>
     <script src="Utilities.js"></script>
     <script src="BlogPosts.js"></script>
+    <script type="module" src="BlogComments.js"></script>
     <script>
         title();
         setNavbarColor("blue");
@@ -141,6 +149,15 @@
             });
         }
         displayBlogPosts(); // Call the function to display blog posts
+
+
+
+        // the bit about displaying the comments
+
+
+
+
+
     </script>
 </body>
 
