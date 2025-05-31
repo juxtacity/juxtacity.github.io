@@ -88,7 +88,7 @@
         }
 
         #infoBox {
-            width: 50%;
+
             height: 100%;
             background-color: var(--red4);
             color: var(--white);
@@ -105,12 +105,6 @@
 
         }
 
-        #infotable {
-            width: 100%;
-            height: 100%;
-            margin-top: 20px;
-            border: none;
-        }
 
         .center {
             display: block;
@@ -118,6 +112,56 @@
             margin-right: auto;
             width: 50%;
             margin-top: 0px;
+        }
+
+        #pricingHeader {
+            width: 100%;
+            background-color: var(--red3);
+            color: var(--white);
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        #pricingTable {
+            width: 100%;
+
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-right: 20px;
+            border-width: px;
+        }
+
+        #pricingTable td {
+            padding: 20px;
+
+            vertical-align: top;
+            background-color: var(--red3);
+            color: var(--white);
+            padding: 20px;
+            text-align: center;
+            font-size: 18px;
+            border: 10px solid var(--blackWarm);
+            margin-bottom: 50px;
+        }
+
+        #pricingTable h3 {
+            margin: 0;
+            font-size: 20px;
+            color: var(--white);
+        }
+
+        #pricingTable h4 {
+            margin: 0;
+            font-size: 18px;
+            color: var(--red1);
+        }
+
+        #pricingTable p {
+            font-size: 16px;
+            color: var(--white);
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -200,31 +244,71 @@
 
 
 
-                <table id="infotable">
-                    <td id="infoBox">
-                        <p>My Youtube Channel:</p>
-                        <a href="https://www.youtube.com/@Juxtacity">youtube.com/@Juxtacity</a>
+                <div id="infoBox">
+                    <p>My Youtube Channel:</p>
+                    <a href="https://www.youtube.com/@Juxtacity">youtube.com/@Juxtacity</a>
 
 
-                    </td>
-                    <td></td>
-                    <td id="infoBox">
-                        <p>Contact me for doing businesses:</p>
-                        <a href="mailto:juxtacitymusic@gmail.com">juxtacitymusic@gmail.com</a>
+                </div>
 
-                    </td>
-                </table>
 
 
             </td>
-            <td style=" width: 50%; height: 100%; position: fixed; ">
-                <a href="https://www.youtube.com/@Juxtacity">
+            <td style=" width: 50%; height: 100%;  ">
+
+                <table id="pricingTable">
+                    <tr>
+                        <td id="pricingHeader" colspan="2">Pricing</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>Improvized Backing Tracks</h3>
+                            <h4>$15 a minute</h4>
+                        </td>
+                        <td>
+                            <p>partly improvised piano to spicen up a video, At a bargain price and with speedy
+                                delivery because of lesser deliberation on my part over making it. Send me a video and
+                                I'll add ambience to it.
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>Pure piano piece</h3>
+                            <h4>$50 a minute</h4>
+                        </td>
+                        <td>
+                            <p>Solo piano to fit any vibe.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>Fully Rendered Piece</h3>
+                            <h4>$80 a minute</h4>
+                        </td>
+                        <td>
+                            <p>a song with all the instruments you want</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" id="infoBox">
+                            <p>Contact me for doing businesses:</p>
+                            <a href="mailto:juxtacitymusic@gmail.com">juxtacitymusic@gmail.com</a>
+
+                        </td>
+                    </tr>
+                </table>
+
+
+
+
+                <!-- <a href="https://www.youtube.com/@Juxtacity">
                     <h1 style="margin-bottom:0px;">My Channel</h1>
 
 
                     <img class="center" src="CampfireLogo.png" alt="Campfire Logo" style="width: 50%; height: auto;">
 
-                </a>
+                </a> -->
             </td>
         </tr>
 
